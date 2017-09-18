@@ -12,6 +12,7 @@
    <class>br.com.styleAtual.model.domain.Caixa</class>   
    <class>br.com.styleAtual.model.domain.Cliente</class>   
    <class>br.com.styleAtual.model.domain.Conta</class>
+   <class>br.com.styleAtual.model.domain.Endereco</class>
    <class>br.com.styleAtual.model.domain.Loja</class>
    <class>br.com.styleAtual.model.domain.Produto</class>
    <class>br.com.styleAtual.model.domain.Responsavel</class>
