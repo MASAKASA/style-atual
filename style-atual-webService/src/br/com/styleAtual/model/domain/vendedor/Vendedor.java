@@ -1,4 +1,4 @@
-package br.com.styleAtual.model.domain;
+package br.com.styleAtual.model.domain.vendedor;
 
 public class Vendedor {
 
