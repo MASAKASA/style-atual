@@ -5,6 +5,10 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   
+  <properties>
+ 	 <jersey.version>2.26-b08</jersey.version>
+  </properties>
+  
   <dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -32,6 +36,36 @@
 			<artifactId>javax.servlet.jsp-api</artifactId>
 			<version>2.3.1</version>
 		</dependency>
+		
+	<dependency>
+  		<groupId>org.hibernate</groupId>
+  		<artifactId>hibernate-entitymanager</artifactId>
+  		<version>5.2.6.Final</version>
+  	</dependency>
+  	
+  	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>5.1.38</version>
+	</dependency>
+  	
+  	<dependency>
+	    <groupId>org.glassfish.jersey.containers</groupId>
+	    <artifactId>jersey-container-jetty-servlet</artifactId>
+	    <version>${jersey.version}</version>
+	</dependency>
+	
+	<dependency>
+        <groupId>org.glassfish.jersey.media</groupId>
+        <artifactId>jersey-media-json-jackson</artifactId>
+        <version>${jersey.version}</version>
+    </dependency>  
+	
+	<dependency>
+    	<groupId>org.glassfish.jersey.inject</groupId>
+    	<artifactId>jersey-hk2</artifactId>
+    	<version>${jersey.version}</version>
+	</dependency>
 
 	</dependencies>
 	<build>
