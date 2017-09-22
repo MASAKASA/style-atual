@@ -8,5 +8,5 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @ComponentScan("br.com.styleAtual")
 @EnableWebMvc
 public class RootConfig {
-
+	//Alteração teste Anderson
 }
