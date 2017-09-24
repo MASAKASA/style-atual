@@ -18,18 +18,22 @@ public class Vendedor {
 	private Long id;
 	
 	@NotNull
-	@Size(min = 1)
+	@Size(min = 2, max = 255)
 	private String nome;
 	
 	@DecimalMin("0.01")
 	private Float salario;
-	
+
+	@DecimalMin("0.00")
 	private Float comissao;
 	
+	@DecimalMin("0.00")
 	private Float metaDeVenda;
 	
+	@DecimalMin("0.00")
 	private Float bonus;
 	
+	@NotNull
 	private EnumVendedorMeta periodoMeta;
 	
 	public Vendedor() {
@@ -102,5 +106,18 @@ public class Vendedor {
 
 	public void setPeriodoMeta(EnumVendedorMeta periodoMeta) {
 		this.periodoMeta = periodoMeta;
+	}
+
+	@Override
+	public String toString() {
+		
+		return "Vendedor \n"
+						+ "id = " + getId() + ";\n"
+						+ "nome = " + getNome() + ";\n"
+						+ "salario = " + getSalario() + ";\n"
+						+ "comissao = " + getComissao() + ";\n"
+						+ "metaDeVenda = " + getMetaDeVenda() + ";\n"
+						+ "bonus = " + getBonus() + ";\n"
+						+ "periodoMeta = " + getPeriodoMeta().getMeta() +".\n";
 	}
 }
