@@ -2,10 +2,10 @@ package br.com.styleAtual.controller.conversor;
 
 public enum EnumVendedorMeta {
 
-	SemMeta("Sem mata"),
-	Diaria("Diária"),
-	Semanal("Semanal"),
-	Mensal("Mensal");
+	SEM_META("Sem mata"),
+	DIARIA("Diária"),
+	SEMANAL("Semanal"),
+	MENSAL("Mensal");
 	
 	private String meta;
 	
