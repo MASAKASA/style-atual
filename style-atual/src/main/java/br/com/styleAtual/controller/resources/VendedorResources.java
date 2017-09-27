@@ -19,12 +19,7 @@ import br.com.styleAtual.service.VendedorService;
 @RequestMapping("vendedor")
 public class VendedorResources {
 	
-	private InterfaceService vendedorService;
-	
-	public VendedorResources() {
-		super();
-		vendedorService = new VendedorService();
-	}
+	private InterfaceService vendedorService = new VendedorService();
 
 	@RequestMapping(value = "/lista", method = RequestMethod.GET)
 	public List<Vendedor> lista() {
