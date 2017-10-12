@@ -3,7 +3,6 @@ package br.com.styleAtual.model.dao;
 import java.util.List;
 
 import br.com.styleAtual.exceptions.DAOException;
-import br.com.styleAtual.model.domain.Vendedor;
 
 public interface InterfaceDAO <O,I,S,L>{
 
