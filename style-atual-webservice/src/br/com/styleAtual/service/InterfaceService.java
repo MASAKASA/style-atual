@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface InterfaceService <O,I,S,L>{
 
-	public O save(O object);
+	public void save(O object);
 	public O update(O object);
 	public O delete(L id);
 	public O getById(L id);

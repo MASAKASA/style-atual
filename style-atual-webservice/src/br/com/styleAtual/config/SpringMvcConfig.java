@@ -7,11 +7,8 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-
-//@EnableWebMvc
 @Configuration
-//@ComponentScan("br.com.styleAtual.controller")
-public class StringMvcConfig extends WebMvcConfigurerAdapter {
+public class SpringMvcConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

@@ -1,15 +1,15 @@
-package br.com.styleAtual.controller.conversor;
+package br.com.styleAtual.model.domain;
 
-public enum EnumVendedorMeta {
+public enum EPeriodoMeta {
 
-	SEM_META("Sem mata"),
+	SEM_META("Sem meta"),
 	DIARIA("Diária"),
 	SEMANAL("Semanal"),
 	MENSAL("Mensal");
 	
 	private String meta;
 	
-	EnumVendedorMeta(String meta) {
+	EPeriodoMeta(String meta) {
 		this.meta = meta;
 	}
 

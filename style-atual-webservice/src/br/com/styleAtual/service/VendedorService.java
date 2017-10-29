@@ -2,20 +2,21 @@ package br.com.styleAtual.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.styleAtual.model.dao.InterfaceDao;
-import br.com.styleAtual.model.dao.VendedorDao;
 import br.com.styleAtual.model.domain.Vendedor;
 
 @Service
 public class VendedorService implements InterfaceService<Vendedor, Integer, String, Long>{
 
-	private InterfaceDao vendedorDao = new VendedorDao();
+	@Autowired
+	private InterfaceDao<Vendedor, Integer, String, Long> vendedorDao;
 
 	@Override
-	public Vendedor save(Vendedor vendedor) {
-		return (Vendedor) vendedorDao.save(vendedor);
+	public void  save(Vendedor vendedor) {
+		vendedorDao.save(vendedor);
 	}
 
 	@Override

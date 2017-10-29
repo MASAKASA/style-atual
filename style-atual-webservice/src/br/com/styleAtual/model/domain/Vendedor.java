@@ -1,97 +1,88 @@
 package br.com.styleAtual.model.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import java.io.Serializable;
+
+import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotNull;
-
-
-import br.com.styleAtual.controller.conversor.EnumVendedorMeta;
-
 
 @Entity
-@Table(name = "vendedor")
-public class Vendedor extends Usuario {
+@DiscriminatorValue(value = "V")
+public class Vendedor extends Usuario implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6292020341014976133L;
+
 	@DecimalMin("0.01")
-	private Float salario;
+	@Column(name="salario_vendedor")
+	private Double salario;
 
 	@DecimalMin("0.00")
-	private Float comissao;
+	@Column(name="comissao_vendedor")
+	private Double comissao;
 	
 	@DecimalMin("0.00")
-	private Float metaDeVenda;
+	@Column(name="meta_vendedor")
+	private Double meta;
 	
 	@DecimalMin("0.00")
-	private Float bonus;
+	@Column(name="bonus_vendedor")
+	private Double bonus;
 	
-	@NotNull
-	private EnumVendedorMeta periodoMeta;
+	@Enumerated(EnumType.STRING)
+	private EPeriodoMeta periodoMeta;
 	
 	public Vendedor() {
 		super();
 	}
 
-	public Vendedor(Float salario, Float comissao, Float metaDeVenda, Float bonus,
-			EnumVendedorMeta periodoMeta) {
-		super();
-		this.salario = salario;
-		this.comissao = comissao;
-		this.metaDeVenda = metaDeVenda;
-		this.bonus = bonus;
-		this.periodoMeta = periodoMeta;
-	}
-
-	public Float getSalario() {
-		return salario;
-	}
-
-	public void setSalario(Float salario) {
-		this.salario = salario;
-	}
-
-	public Float getComissao() {
-		return comissao;
-	}
-
-	public void setComissao(Float comissao) {
-		this.comissao = comissao;
-	}
-
-	public Float getMetaDeVenda() {
-		return metaDeVenda;
-	}
-
-	public void setMetaDeVenda(Float metaDeVenda) {
-		this.metaDeVenda = metaDeVenda;
-	}
-
-	public Float getBonus() {
-		return bonus;
-	}
-
-	public void setBonus(Float bonus) {
-		this.bonus = bonus;
-	}
-
-	public EnumVendedorMeta getPeriodoMeta() {
-		return periodoMeta;
-	}
-
-	public void setPeriodoMeta(EnumVendedorMeta periodoMeta) {
-		this.periodoMeta = periodoMeta;
-	}
-
 	@Override
 	public String toString() {
 		
-		return "Vendedor \n"
-						+ "id = " + getId() + ";\n"
-						+ "nome = " + getNome() + ";\n"
-						+ "salario = " + getSalario() + ";\n"
-						+ "comissao = " + getComissao() + ";\n"
-						+ "metaDeVenda = " + getMetaDeVenda() + ";\n"
-						+ "bonus = " + getBonus() + ";\n"
-						+ "periodoMeta = " + getPeriodoMeta().getMeta() +".\n";
+		return "Vendedor [id = " + getId() + ", nome = " + getNome() + ", senha = " + getSenha()
+			+ ", salario = " + salario + ", comissao = " + comissao 
+			+ ", metaDeVenda = " + meta + ", bonus = " + bonus 
+			+ ", periodoMeta = " + getPeriodoMeta().getMeta() +"]";
+	}
+
+	public Double getSalario() {
+		return salario;
+	}
+
+	public void setSalario(Double salario) {
+		this.salario = salario;
+	}
+
+	public Double getComissao() {
+		return comissao;
+	}
+
+	public void setComissao(Double comissao) {
+		this.comissao = comissao;
+	}
+
+	public Double getMeta() {
+		return meta;
+	}
+
+	public void setMetaDeVenda(Double meta) {
+		this.meta = meta;
+	}
+
+	public Double getBonus() {
+		return bonus;
+	}
+
+	public void setBonus(Double bonus) {
+		this.bonus = bonus;
+	}
+
+	public EPeriodoMeta getPeriodoMeta() {
+		return periodoMeta;
+	}
+
+	public void setPeriodoMeta(EPeriodoMeta periodoMeta) {
+		this.periodoMeta = periodoMeta;
 	}
 }

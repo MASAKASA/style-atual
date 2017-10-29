@@ -9,21 +9,21 @@ import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
-public class WebAppInitializer implements WebApplicationInitializer {
+public class SpringInitConfig implements WebApplicationInitializer {
 
 	@Override
 	public void onStartup(ServletContext container) throws ServletException {
 
         // Create the 'root' Spring application context
         AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
-        rootContext.register(RootConfig.class);//, JPAConfig.class, SecurityConfig.class
+        rootContext.register(RootConfig.class, SpringJpaConfig.class);
  
         // Manage the lifecycle of the root application context
         container.addListener(new ContextLoaderListener(rootContext));
  
         // Create the dispatcher servlet's Spring application context
         AnnotationConfigWebApplicationContext dispatcherServlet = new AnnotationConfigWebApplicationContext();
-        dispatcherServlet.register(StringMvcConfig.class);
+        dispatcherServlet.register(SpringMvcConfig.class, SpringJpaConfig.class);
              
         // Register and map the dispatcher servlet
         ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcher", new DispatcherServlet(dispatcherServlet));
