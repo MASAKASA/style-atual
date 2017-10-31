@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,7 +23,6 @@ public class VendedorController implements InterfaceController<Vendedor, Integer
 	@Autowired
 	private InterfaceService<Vendedor, Integer, String, Long> vendedorService;
 	
-
 	@Override
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public @ResponseBody Vendedor save(@Valid @RequestBody Vendedor vendedor) {
@@ -31,36 +31,44 @@ public class VendedorController implements InterfaceController<Vendedor, Integer
 	}
 
 	@Override
+	@RequestMapping(value = "/update/{id}" , method = RequestMethod.GET)
+	public Vendedor preUpdate(@PathVariable("id") Long id) {
+		Vendedor vendedor = vendedorService.getById(id);
+		return vendedor;
+	}
+
+	@Override
+	@RequestMapping(value = "/update" , method = RequestMethod.PUT)
 	public Vendedor update(@Valid @RequestBody Vendedor vendedor) {
-		// TODO Faltando implementação
 		vendedorService.update(vendedor);
 		return vendedor;
 	}
 
 	@Override
-	public String delete(Long id) {
-		// TODO Faltando implementação
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+	public String delete(@PathVariable("id") Long id) {
 		vendedorService.delete(id);
 		String mensagen = "Vendedor excluído com sucesso!";
 		return mensagen;
 	}
 
 	@Override
-	public Vendedor getById(Long id) {
-		// TODO Faltando implementação
+	@RequestMapping(value = "/{id}")
+	public Vendedor getById(@PathVariable("id") Long id) {
 		return vendedorService.getById(id);
 	}
 
 	@Override
-	public List<Vendedor> getByPagination(Integer firsResult, Integer maxResult) {
-		// TODO Faltando implementação
-		return null;
+	@RequestMapping(value = "/pagination")
+	public List<Vendedor> getByPagination(@RequestParam("firsResult") Integer firsResult, 
+			@RequestParam("maxResult") Integer maxResult) {
+		return vendedorService.getByPagination(firsResult, maxResult);
 	}
 
 	@Override
-	public List<Vendedor> getByName(@QueryP String name) {
-		// TODO Faltando implementação
-		return null;
+	@RequestMapping(value = "/{name}")
+	public List<Vendedor> getByName(@PathVariable("name") String name) {
+		return vendedorService.getByName(name);
 	}
 	
 	@Override
