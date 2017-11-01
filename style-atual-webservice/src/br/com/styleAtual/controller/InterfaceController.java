@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public interface InterfaceController <O,I,S,L>{
 
 	public O save(O object);
-	public O preUpdate(L id);
 	public O update(O object);
 	public S delete(L id);
 	public O getById(L id);

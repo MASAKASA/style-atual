@@ -31,13 +31,6 @@ public class VendedorController implements InterfaceController<Vendedor, Integer
 	}
 
 	@Override
-	@RequestMapping(value = "/update/{id}" , method = RequestMethod.GET)
-	public Vendedor preUpdate(@PathVariable("id") Long id) {
-		Vendedor vendedor = vendedorService.getById(id);
-		return vendedor;
-	}
-
-	@Override
 	@RequestMapping(value = "/update" , method = RequestMethod.PUT)
 	public Vendedor update(@Valid @RequestBody Vendedor vendedor) {
 		vendedorService.update(vendedor);

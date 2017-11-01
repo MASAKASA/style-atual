@@ -25,7 +25,7 @@ public interface InterfaceDao <O,I,S,L>{
 	 * @param object
 	 * @return
 	 */
-	public O update(O object);
+	public void update(O object);
 	
 	/**
 	 * 
@@ -33,7 +33,7 @@ public interface InterfaceDao <O,I,S,L>{
 	 * @return
 	 * @throws DAOException
 	 */
-	public O delete(L id);// throws DAOException;
+	public void delete(L id);// throws DAOException;
 	
 	/**
 	 * 

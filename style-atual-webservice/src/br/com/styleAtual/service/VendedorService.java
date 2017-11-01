@@ -16,47 +16,49 @@ public class VendedorService implements InterfaceService<Vendedor, Integer, Stri
 
 	@Override
 	public void  save(Vendedor vendedor) {
+		// TODO Auto-generated method stub
 		vendedorDao.save(vendedor);
 	}
 
 	@Override
-	public Vendedor update(Vendedor vendedor) {
+	public void update(Vendedor vendedor) {
 		// TODO Auto-generated method stub
-		return null;
+		vendedorDao.update(vendedor);
 	}
 
 	@Override
-	public Vendedor delete(Long id) {
+	public void delete(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		vendedorDao.delete(id);
 	}
 
 	@Override
 	public Vendedor getById(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return vendedorDao.getById(id);
 	}
 
 	@Override
 	public List<Vendedor> getByPagination(Integer firsResult, Integer maxResult) {
 		// TODO Auto-generated method stub
-		return null;
+		return vendedorDao.getByPagination(firsResult, maxResult);
 	}
 
 	@Override
 	public List<Vendedor> getByName(String name) {
 		// TODO Auto-generated method stub
-		return null;
+		return vendedorDao.getByName(name);
 	}
 
 	@Override
 	public List<Vendedor> getAll() {
+		// TODO Auto-generated method stub
 		return vendedorDao.getAll();
 	}
 
 	@Override
 	public Boolean objectIsValid(Vendedor vendedor) {
 		// TODO Auto-generated method stub
-		return null;
+		return vendedorDao.objectIsValid(vendedor);
 	}	
 }
