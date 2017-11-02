@@ -25,7 +25,15 @@ public class VendedorDao implements InterfaceDao<Vendedor, Integer, String, Long
 	
 	@Override
 	public void update(Vendedor vendedor) {
-		entityManager.merge(vendedor);
+		Vendedor vendedorManaged = entityManager.find(Vendedor.class, vendedor.getId());
+		
+		vendedorManaged.setNome(vendedor.getNome());
+		vendedorManaged.setSenha(vendedor.getSenha());
+		vendedorManaged.setBonus(vendedor.getBonus());
+		vendedorManaged.setComissao(vendedor.getComissao());
+		vendedorManaged.setMeta(vendedor.getMeta());
+		vendedorManaged.setPeriodoMeta(vendedor.getPeriodoMeta());
+		vendedorManaged.setSalario(vendedor.getSalario());
 	}
 	
 	@Override
@@ -45,8 +53,13 @@ public class VendedorDao implements InterfaceDao<Vendedor, Integer, String, Long
 	@Transactional(readOnly = true)
 	@Override
 	public List<Vendedor> getByPagination(Integer firsResult, Integer maxResult){// throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
+		List<Vendedor> vendedores;
+		String jpql = "from Vendedor v";
+		vendedores = entityManager.createQuery(jpql, Vendedor.class)
+				.setFirstResult(firsResult - 1)
+				.setMaxResults(maxResult)
+				.getResultList();
+		return vendedores;
 	}
 	
 	@Transactional(readOnly = true)
@@ -63,7 +76,7 @@ public class VendedorDao implements InterfaceDao<Vendedor, Integer, String, Long
 	@Transactional(readOnly = true)
 	@Override
 	public List<Vendedor> getAll(){// throws DAOException {
-		String jpql = "from Vendedor u";
+		String jpql = "from Vendedor v";
 		TypedQuery<Vendedor> query = entityManager.createQuery(jpql, Vendedor.class);
 		
 		return query.getResultList();

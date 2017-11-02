@@ -66,7 +66,7 @@ public class Vendedor extends Usuario implements Serializable {
 		return meta;
 	}
 
-	public void setMetaDeVenda(Double meta) {
+	public void setMeta(Double meta) {
 		this.meta = meta;
 	}
 

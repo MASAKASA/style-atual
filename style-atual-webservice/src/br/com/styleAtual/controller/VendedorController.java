@@ -32,35 +32,35 @@ public class VendedorController implements InterfaceController<Vendedor, Integer
 
 	@Override
 	@RequestMapping(value = "/update" , method = RequestMethod.PUT)
-	public Vendedor update(@Valid @RequestBody Vendedor vendedor) {
+	public @ResponseBody Vendedor update(@Valid @RequestBody Vendedor vendedor) {
 		vendedorService.update(vendedor);
 		return vendedor;
 	}
 
 	@Override
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-	public String delete(@PathVariable("id") Long id) {
+	public @ResponseBody String delete(@PathVariable("id") Long id) {
 		vendedorService.delete(id);
 		String mensagen = "Vendedor excluído com sucesso!";
 		return mensagen;
 	}
 
 	@Override
-	@RequestMapping(value = "/{id}")
-	public Vendedor getById(@PathVariable("id") Long id) {
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public @ResponseBody Vendedor getById(@PathVariable("id") Long id) {
 		return vendedorService.getById(id);
 	}
 
 	@Override
-	@RequestMapping(value = "/pagination")
-	public List<Vendedor> getByPagination(@RequestParam("firsResult") Integer firsResult, 
+	@RequestMapping(value = "/pagination", method = RequestMethod.GET)
+	public @ResponseBody List<Vendedor> getByPagination(@RequestParam("firsResult") Integer firsResult, 
 			@RequestParam("maxResult") Integer maxResult) {
 		return vendedorService.getByPagination(firsResult, maxResult);
 	}
 
 	@Override
-	@RequestMapping(value = "/{name}")
-	public List<Vendedor> getByName(@PathVariable("name") String name) {
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public @ResponseBody List<Vendedor> getByName(@RequestParam("name") String name) {
 		return vendedorService.getByName(name);
 	}
 	
