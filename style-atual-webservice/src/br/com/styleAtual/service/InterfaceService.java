@@ -11,5 +11,4 @@ public interface InterfaceService <O,I,S,L>{
 	public List<O> getByPagination(I firsResult, I maxResult);
 	public List<O> getByName(S name);
 	public List<O> getAll();
-	public Boolean objectIsValid(O object);
 }

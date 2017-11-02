@@ -35,6 +35,14 @@ public class VendedorService implements InterfaceService<Vendedor, Integer, Stri
 	@Override
 	public Vendedor getById(Long id) {
 		// TODO Auto-generated method stub
+		
+		//Exemplo para saber se vendedor é valido do banco de dados
+		//Teste realizado direto no dao e colado trexo do código aqui 
+//		Vendedor vendedor = new Vendedor();
+//		vendedor.setId(id);
+//		if (vendedorDao.objectIsValid(vendedor)) {
+//			System.out.println(vendedor.getId() + " id não válido");
+//		}
 		return vendedorDao.getById(id);
 	}
 
@@ -54,11 +62,5 @@ public class VendedorService implements InterfaceService<Vendedor, Integer, Stri
 	public List<Vendedor> getAll() {
 		// TODO Auto-generated method stub
 		return vendedorDao.getAll();
-	}
-
-	@Override
-	public Boolean objectIsValid(Vendedor vendedor) {
-		// TODO Auto-generated method stub
-		return vendedorDao.objectIsValid(vendedor);
 	}	
 }

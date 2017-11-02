@@ -47,6 +47,7 @@ public class VendedorDao implements InterfaceDao<Vendedor, Integer, String, Long
 		String jpql = "from Vendedor v where v.id = :id";
 		TypedQuery<Vendedor> query = entityManager.createQuery(jpql, Vendedor.class);
 		query.setParameter("id", id);
+		
 		return query.getSingleResult();
 	}
 	
@@ -84,7 +85,13 @@ public class VendedorDao implements InterfaceDao<Vendedor, Integer, String, Long
 	
 	@Override
 	public Boolean objectIsValid(Vendedor vendedor) {
-		// TODO Auto-generated method stub
-		return null;
+		boolean isValid = false;
+		String jpql = "from Vendedor v where v.id = :id";
+		TypedQuery<Vendedor> query = entityManager.createQuery(jpql, Vendedor.class);
+		query.setParameter("id", vendedor.getId());
+		if (query.getResultList().isEmpty()) {
+			isValid = true;
+		}
+		return isValid;
 	}
 }
