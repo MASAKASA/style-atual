@@ -14,7 +14,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@Configuration
+@Configuration //Anotacao informando ao Spring que essa classe e de configucao
 @EnableTransactionManagement
 public class SpringJpaConfig {
 

@@ -5,32 +5,32 @@ import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 
-@Entity
-@DiscriminatorValue(value = "V")
+@Entity //Anotacao para mapiar a entidade no banco
+@DiscriminatorValue(value = "V") //Atributo da coluna tipo informando que os dados contidos na linha vai ser de um vendedor 
 public class Vendedor extends Usuario implements Serializable {
 	
 	/**
-	 * 
+	 * Serial criado automaticamente. Boa pratica de programação
 	 */
 	private static final long serialVersionUID = 6292020341014976133L;
 
-	@DecimalMin("0.01")
-	@Column(name="salario_vendedor")
+	@DecimalMin("0.01") //Menos valor coluna
+	@Column(name="salario_vendedor") //Nome da coluna
 	private Double salario;
 
-	@DecimalMin("0.00")
-	@Column(name="comissao_vendedor")
+	@DecimalMin("0.00") //Menos valor coluna
+	@Column(name="comissao_vendedor") //Nome da coluna
 	private Double comissao;
 	
-	@DecimalMin("0.00")
-	@Column(name="meta_vendedor")
+	@DecimalMin("0.00") //Menos valor coluna
+	@Column(name="meta_vendedor") //Nome da coluna
 	private Double meta;
 	
-	@DecimalMin("0.00")
-	@Column(name="bonus_vendedor")
+	@DecimalMin("0.00") //Menos valor coluna
+	@Column(name="bonus_vendedor") //Nome da coluna
 	private Double bonus;
 	
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.STRING) //Informando que no banco os dados da classe Enun seram em String:[SEM_META, DIARIA, SEMANAL ou MENSAL]
 	private EPeriodoMeta periodoMeta;
 	
 	public Vendedor() {

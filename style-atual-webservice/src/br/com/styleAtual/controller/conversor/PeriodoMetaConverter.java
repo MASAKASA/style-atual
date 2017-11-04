@@ -4,6 +4,13 @@ import org.springframework.core.convert.converter.Converter;
 
 import br.com.styleAtual.model.domain.EPeriodoMeta;
 
+/**
+ * 
+ * @author MARCIO
+ * 
+ * Classe gerenciada pelo Spring responsavel para converter dados da requisição HTTP em uma classe Enun[EPeriodoMeta]
+ *
+ */
 public class PeriodoMetaConverter implements Converter<String, EPeriodoMeta> {
 
 	@Override

@@ -4,32 +4,33 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "usuario")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "tipo", length = 1, discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue("U")
+@Entity //Anotacao para mapiar a entidade no banco
+@Table(name = "usuario") //Nome da tabela
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) //Estrategia para heranca
+@DiscriminatorColumn(name = "tipo", length = 1, discriminatorType = DiscriminatorType.STRING) //Coluna para diferenciar os filhos na tabela
+@DiscriminatorValue("U") //Atributo da coluna tipo informando que os dados contidos na linha vai ser de um usuario
 public abstract class Usuario {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_usuario")
+	@Id //Id da tabela
+	@GeneratedValue(strategy=GenerationType.IDENTITY) //Estrategia de auto incremento
+	@Column(name="id_usuario") //Nome da coluna
 	private Long id;
 	
-	@NotNull
-	@Size(min = 2, max = 255)
-	@Column(name="nome_usuario", nullable=false)
+	@NotNull //Informando que nao pode ter valor nulo
+	@Size(min = 2, max = 255) //Tamanho minimo e maximo
+	@Column(name="nome_usuario", nullable=false) //Nome da coluna e informando que nao pode ser vazio com o false
 	private String nome;
 	
-	@NotNull
-	@Size(min = 3, max = 8)
-	@Column(name="senha_usuario", nullable=false)
+	@NotNull //Informando que nao pode ter valor nulo
+	@Size(min = 3, max = 8) //Tamanho minimo e maximo
+	@Column(name="senha_usuario", nullable=false) //Nome da coluna e informando que nao pode ser vazio com o false
 	private String senha;
 	
 	public Usuario() {
 		super();
 	}
 	
+	//Metodo criado por boa pratica de programacao. So para o id
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -38,6 +39,7 @@ public abstract class Usuario {
 		return result;
 	}
 
+	//Metodo criado por boa pratica de programacao. So para o id
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -56,7 +58,7 @@ public abstract class Usuario {
 	}
 	
 	@Override
-	public abstract String toString();
+	public abstract String toString();// Faz com que o metodo seja criado nos filhos
 
 	public Long getId() {
 		return id;

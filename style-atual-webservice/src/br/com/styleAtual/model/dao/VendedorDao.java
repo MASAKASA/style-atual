@@ -11,11 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.styleAtual.model.domain.Vendedor;
 
-@Repository
-@Transactional
+@Repository //Anotacao que essa classe vai ser um repositorio
+@Transactional //Anotacao que diz que essa classe nao vai ser so de leitura de dados. Os metodos que sao so de leitura teram um atribuito especial
 public class VendedorDao implements InterfaceDao<Vendedor, Integer, String, Long>{
 
-	@PersistenceContext
+	@PersistenceContext //Anotacao que gerencia toda as transacoes do banco
 	private EntityManager entityManager;
 	
 	@Override
@@ -41,7 +41,7 @@ public class VendedorDao implements InterfaceDao<Vendedor, Integer, String, Long
 		entityManager.remove(entityManager.getReference(Vendedor.class, id));
 	}
 	
-	@Transactional(readOnly = true)
+	@Transactional(readOnly = true) //Anotacao informando que esse metodo vai ser so de leitura
 	@Override
 	public Vendedor getById(Long id) {// throws DAOException {
 		String jpql = "from Vendedor v where v.id = :id";
@@ -50,8 +50,8 @@ public class VendedorDao implements InterfaceDao<Vendedor, Integer, String, Long
 		
 		return query.getSingleResult();
 	}
-	
-	@Transactional(readOnly = true)
+
+	@Transactional(readOnly = true) //Anotacao informando que esse metodo vai ser so de leitura
 	@Override
 	public List<Vendedor> getByPagination(Integer firsResult, Integer maxResult){// throws DAOException {
 		List<Vendedor> vendedores;
@@ -63,18 +63,18 @@ public class VendedorDao implements InterfaceDao<Vendedor, Integer, String, Long
 		return vendedores;
 	}
 	
-	@Transactional(readOnly = true)
+	@Transactional(readOnly = true) //Anotacao informando que esse metodo vai ser so de leitura
 	@Override
 	public List<Vendedor> getByName(String name){// throws DAOException {
-		//String jpql = "from Vendedor v where v.nome like :name or u.sobrenome like :sobrenome";
+		//String jpql = "from Vendedor v where v.nome like :name or u.sobrenome like :sobrenome"; //Essa query e para pesquisa do nome por  mais de uma coluna 
 		String jpql = "from Vendedor v where v.nome like :name";
 		TypedQuery<Vendedor> query = entityManager.createQuery(jpql, Vendedor.class);
 		query.setParameter("name", "%"+name+"%");
-		//query.setParameter("sobrenome", "%"+name+"%");
+		//query.setParameter("sobrenome", "%"+name+"%"); //Atribuindo parametro
 		return query.getResultList();
 	}
 	
-	@Transactional(readOnly = true)
+	@Transactional(readOnly = true) //Anotacao informando que esse metodo vai ser so de leitura
 	@Override
 	public List<Vendedor> getAll(){// throws DAOException {
 		String jpql = "from Vendedor v";

@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import br.com.styleAtual.model.dao.InterfaceDao;
 import br.com.styleAtual.model.domain.Vendedor;
 
-@Service
+@Service //Anotacao que essa classe vai ser da camada de servico
 public class VendedorService implements InterfaceService<Vendedor, Integer, String, Long>{
 
-	@Autowired
+	@Autowired //Injecao de depentencia do Spring
 	private InterfaceDao<Vendedor, Integer, String, Long> vendedorDao;
 
 	@Override
@@ -27,9 +27,11 @@ public class VendedorService implements InterfaceService<Vendedor, Integer, Stri
 	}
 
 	@Override
-	public void delete(Long id) {
+	public String delete(Long id) {
 		// TODO Auto-generated method stub
 		vendedorDao.delete(id);
+		String mensagen = "Vendedor excluído com sucesso!";
+		return mensagen;
 	}
 
 	@Override
