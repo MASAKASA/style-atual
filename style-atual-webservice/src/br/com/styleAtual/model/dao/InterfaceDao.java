@@ -2,6 +2,8 @@ package br.com.styleAtual.model.dao;
 
 import java.util.List;
 
+import br.com.styleAtual.exceptions.DAOException;
+
 /**
  * 
  * @author MARCIO
@@ -17,51 +19,53 @@ public interface InterfaceDao <O,I,S,L>{
 	/**
 	 * 
 	 * @param Object para ser salvo no banco de dados
+	 * @throws DAOException captura qualquer exceção de tempo de execução e repassa a responsabilidade para outro camada
 	 */
-	public void save(O object);
+	public void save(O object) throws DAOException;
 	
 	/**
 	 * 
 	 * @param Object para ser atualizado no banco de dados
+	 * @throws DAOException captura qualquer exceção de tempo de execução e repassa a responsabilidade para outro camada
 	 */
-	public void update(O object);
+	public void update(O object) throws DAOException;
 	
 	/**
 	 * 
 	 * @param Long id do objeto para realização de delete no banco de dados 
-	 * @throws DAOException
+	 * @throws DAOException captura qualquer exceção de tempo de execução e repassa a responsabilidade para outro camada
 	 */
-	public void delete(L id);// throws DAOException;
+	public void delete(L id) throws DAOException;
 	
 	/**
 	 * 
 	 * @param Long id do objeto para pesquisa no banco de dados 
 	 * @return Objeto da pesquisa no banco de dados
-	 * @throws DAOException
+	 * @throws DAOException captura qualquer exceção de tempo de execução e repassa a responsabilidade para outro camada
 	 */
-	public O getById(L id);// throws DAOException;
+	public O getById(L id) throws DAOException;
 	
 	/**
 	 * 
 	 * @param Integer firsResult para primeiro resultado da pesquisa no banco de dados
 	 * @param Integer maxResult para total de resultado da pesquisa no banco de dados 
 	 * @return Lista com objetos da pesquisa no banco e dados
-	 * @throws DAOException
+	 * @throws DAOException captura qualquer exceção de tempo de execução e repassa a responsabilidade para outro camada
 	 */
-	public List<O> getByPagination(I firsResult, I maxResult);// throws DAOException;
+	public List<O> getByPagination(I firsResult, I maxResult) throws DAOException;
 	
 	/**
 	 * 
 	 * @param String com o nome do objeto para pesquisa no banco de dados 
 	 * @return Lista com objetos da pesquisa no banco e dados
-	 * @throws DAOException
+	 * @throws DAOException captura qualquer exceção de tempo de execução e repassa a responsabilidade para outro camada
 	 */
-	public List<O> getByName(S name);// throws DAOException;
+	public List<O> getByName(S name) throws DAOException;
 	
 	/**
 	 * 
 	 * @return Lista com todos objetos da pesquisa no banco e dados
-	 * @throws DAOException
+	 * @throws DAOException captura qualquer exceção de tempo de execução e repassa a responsabilidade para outro camada
 	 */
 	public List<O> getAll();// throws DAOException;
 	
@@ -69,6 +73,7 @@ public interface InterfaceDao <O,I,S,L>{
 	 * 
 	 * @param Object para saber se existe no banco de dados
 	 * @return False se o objeto não existe e true se existe no banco de dados
+	 * @throws DAOException captura qualquer exceção de tempo de execução e repassa a responsabilidade para outro camada
 	 */
-	public Boolean objectIsValid(O object);
+	public Boolean objectIsValid(O object) throws DAOException;
 }

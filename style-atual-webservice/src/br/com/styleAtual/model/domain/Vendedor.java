@@ -31,7 +31,7 @@ public class Vendedor extends Usuario implements Serializable {
 	private Double bonus;
 	
 	@Enumerated(EnumType.STRING) //Informando que no banco os dados da classe Enun seram em String:[SEM_META, DIARIA, SEMANAL ou MENSAL]
-	private EPeriodoMeta periodoMeta;
+	private PeriodoMeta periodoMeta;
 	
 	public Vendedor() {
 		super();
@@ -78,11 +78,11 @@ public class Vendedor extends Usuario implements Serializable {
 		this.bonus = bonus;
 	}
 
-	public EPeriodoMeta getPeriodoMeta() {
+	public PeriodoMeta getPeriodoMeta() {
 		return periodoMeta;
 	}
 
-	public void setPeriodoMeta(EPeriodoMeta periodoMeta) {
+	public void setPeriodoMeta(PeriodoMeta periodoMeta) {
 		this.periodoMeta = periodoMeta;
 	}
 }

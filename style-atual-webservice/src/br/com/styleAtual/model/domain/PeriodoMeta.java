@@ -1,6 +1,6 @@
 package br.com.styleAtual.model.domain;
 
-public enum EPeriodoMeta {
+public enum PeriodoMeta {
 
 	SEM_META("Sem meta"),
 	DIARIA("Diária"),
@@ -9,7 +9,7 @@ public enum EPeriodoMeta {
 	
 	private String meta;
 	
-	EPeriodoMeta(String meta) {
+	PeriodoMeta(String meta) {
 		this.meta = meta;
 	}
 
