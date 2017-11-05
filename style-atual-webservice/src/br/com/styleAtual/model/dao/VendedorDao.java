@@ -9,7 +9,7 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.styleAtual.exceptions.DAOException;
+import br.com.styleAtual.exceptions.WebServiceException;
 import br.com.styleAtual.model.domain.Vendedor;
 
 @Repository //Anotacao que essa classe vai ser um repositorio
@@ -20,12 +20,12 @@ public class VendedorDao implements InterfaceDao<Vendedor, Integer, String, Long
 	private EntityManager entityManager;
 	
 	@Override
-	public void save(Vendedor vendedor)  throws DAOException{
+	public void save(Vendedor vendedor)  throws WebServiceException{
 		entityManager.persist(vendedor);
 	}
 	
 	@Override
-	public void update(Vendedor vendedor)  throws DAOException{
+	public void update(Vendedor vendedor)  throws WebServiceException{
 		Vendedor vendedorManaged = entityManager.find(Vendedor.class, vendedor.getId());
 		
 		vendedorManaged.setNome(vendedor.getNome());
@@ -38,13 +38,13 @@ public class VendedorDao implements InterfaceDao<Vendedor, Integer, String, Long
 	}
 	
 	@Override
-	public void delete(Long id)  throws DAOException {
+	public void delete(Long id)  throws WebServiceException {
 		entityManager.remove(entityManager.getReference(Vendedor.class, id));
 	}
 	
 	@Transactional(readOnly = true) //Anotacao informando que esse metodo vai ser so de leitura
 	@Override
-	public Vendedor getById(Long id)  throws DAOException {
+	public Vendedor getById(Long id)  throws WebServiceException {
 		String jpql = "from Vendedor v where v.id = :id";
 		TypedQuery<Vendedor> query = entityManager.createQuery(jpql, Vendedor.class);
 		query.setParameter("id", id);
@@ -54,7 +54,7 @@ public class VendedorDao implements InterfaceDao<Vendedor, Integer, String, Long
 
 	@Transactional(readOnly = true) //Anotacao informando que esse metodo vai ser so de leitura
 	@Override
-	public List<Vendedor> getByPagination(Integer firsResult, Integer maxResult) throws DAOException {
+	public List<Vendedor> getByPagination(Integer firsResult, Integer maxResult) throws WebServiceException {
 		List<Vendedor> vendedores;
 		String jpql = "from Vendedor v";
 		vendedores = entityManager.createQuery(jpql, Vendedor.class)
@@ -66,7 +66,7 @@ public class VendedorDao implements InterfaceDao<Vendedor, Integer, String, Long
 	
 	@Transactional(readOnly = true) //Anotacao informando que esse metodo vai ser so de leitura
 	@Override
-	public List<Vendedor> getByName(String name) throws DAOException {
+	public List<Vendedor> getByName(String name) throws WebServiceException {
 		//String jpql = "from Vendedor v where v.nome like :name or u.sobrenome like :sobrenome"; //Essa query e para pesquisa do nome por  mais de uma coluna 
 		String jpql = "from Vendedor v where v.nome like :name";
 		TypedQuery<Vendedor> query = entityManager.createQuery(jpql, Vendedor.class);
@@ -77,7 +77,7 @@ public class VendedorDao implements InterfaceDao<Vendedor, Integer, String, Long
 	
 	@Transactional(readOnly = true) //Anotacao informando que esse metodo vai ser so de leitura
 	@Override
-	public List<Vendedor> getAll() throws DAOException {
+	public List<Vendedor> getAll() throws WebServiceException {
 		String jpql = "from Vendedor v";
 		TypedQuery<Vendedor> query = entityManager.createQuery(jpql, Vendedor.class);
 		
@@ -85,7 +85,7 @@ public class VendedorDao implements InterfaceDao<Vendedor, Integer, String, Long
 	}
 	
 	@Override
-	public Boolean objectIsValid(Vendedor vendedor) throws DAOException{
+	public Boolean objectIsValid(Vendedor vendedor) throws WebServiceException{
 		boolean isValid = false;
 		String jpql = "from Vendedor v where v.id = :id";
 		TypedQuery<Vendedor> query = entityManager.createQuery(jpql, Vendedor.class);

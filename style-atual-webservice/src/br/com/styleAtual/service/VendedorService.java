@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.styleAtual.exceptions.DAOException;
+import br.com.styleAtual.exceptions.WebServiceException;
 import br.com.styleAtual.exceptions.ErroCode;
 import br.com.styleAtual.model.dao.InterfaceDao;
 import br.com.styleAtual.model.domain.Vendedor;
@@ -22,7 +22,7 @@ public class VendedorService implements InterfaceService<Vendedor, Integer, Stri
 		try {
 			vendedorDao.save(vendedor);
 		} catch (RuntimeException ex) {
-			//throw new DAOException("Vendedor com dados incompletos.", ErroCode.BAD_REQUEST.getCode());
+			//throw new WebServiceException("Vendedor com dados incompletos.", ErroCode.BAD_REQUEST.getCode());
 		}
 	}
 
@@ -32,10 +32,10 @@ public class VendedorService implements InterfaceService<Vendedor, Integer, Stri
 		try {
 			vendedorDao.update(vendedor);
 		} catch (NullPointerException ex) {
-//			throw new DAOException("Vendedor informado para atualização não existe: " 
+//			throw new WebServiceException("Vendedor informado para atualização não existe: " 
 //					+ ex.getMessage(), ErroCode.NOT_FOUND.getCode());
 		} catch (RuntimeException ex) {
-//			throw new DAOException("Erro ao atualizar vendedor no banco de dados: " 
+//			throw new WebServiceException("Erro ao atualizar vendedor no banco de dados: " 
 //					+ ex.getMessage(), ErroCode.SERVER_ERROR.getCode());
 		}
 		
@@ -49,10 +49,10 @@ public class VendedorService implements InterfaceService<Vendedor, Integer, Stri
 			vendedorDao.delete(id);
 			mensagen = "Vendedor excluído com sucesso!";
 		} catch (IllegalArgumentException ex) {
-//			throw new DAOException("Vendedor informado para remoção não existe: " 
+//			throw new WebServiceException("Vendedor informado para remoção não existe: " 
 //					+ ex.getMessage(), ErroCode.NOT_FOUND.getCode());
 		} catch (RuntimeException ex) {
-//			throw new DAOException("Erro ao remover vendedor do banco de dados: " 
+//			throw new WebServiceException("Erro ao remover vendedor do banco de dados: " 
 //					+ ex.getMessage(), ErroCode.SERVER_ERROR.getCode());
 		}
 		return mensagen;
@@ -73,7 +73,7 @@ public class VendedorService implements InterfaceService<Vendedor, Integer, Stri
 		try {
 			vendedor = vendedorDao.getById(id);
 		} catch (RuntimeException ex) {
-//			throw new DAOException("Erro ao buscar vendedor por id no banco de dados: " 
+//			throw new WebServiceException("Erro ao buscar vendedor por id no banco de dados: " 
 //					+ ex.getMessage(), ErroCode.SERVER_ERROR.getCode());
 		}
 		return vendedor;
@@ -86,12 +86,12 @@ public class VendedorService implements InterfaceService<Vendedor, Integer, Stri
 		try {
 			vendedores = vendedorDao.getByPagination(firsResult, maxResult);
 		} catch (RuntimeException ex) {
-//			throw new DAOException("Erro ao buscar Vendedores no banco de dados: " 
+//			throw new WebServiceException("Erro ao buscar Vendedores no banco de dados: " 
 //					+ ex.getMessage(), ErroCode.SERVER_ERROR.getCode());
 		}
 		
 		if (vendedores.isEmpty()) {
-			//throw new DAOException("Página com vendedores vazia.", ErroCode.NOT_FOUND.getCode());
+			//throw new WebServiceException("Página com vendedores vazia.", ErroCode.NOT_FOUND.getCode());
 		}
 		
 		return vendedores;
@@ -104,12 +104,12 @@ public class VendedorService implements InterfaceService<Vendedor, Integer, Stri
 		try {
 			vendedores = vendedorDao.getByName(name);
 		} catch (RuntimeException ex) {
-//			throw new DAOException("Erro ao buscar vendedores por nome no banco de dados: " 
+//			throw new WebServiceException("Erro ao buscar vendedores por nome no banco de dados: " 
 //					+ ex.getMessage(), ErroCode.SERVER_ERROR.getCode());
 		}
 		
 		if (vendedores.isEmpty()) {
-			//throw new DAOException("A consulta não encontrou vendedores.", ErroCode.NOT_FOUND.getCode());
+			//throw new WebServiceException("A consulta não encontrou vendedores.", ErroCode.NOT_FOUND.getCode());
 		}
 		
 		return vendedores;
