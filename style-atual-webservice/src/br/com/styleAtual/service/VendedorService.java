@@ -122,12 +122,12 @@ public class VendedorService implements InterfaceService<Vendedor, Integer, Stri
 		try {
 			vendedores = vendedorDao.getAll();
 		} catch (RuntimeException ex) {
-//			throw new DAOException("Erro ao recuperar todos os vendedores do banco: " 
+//			throw new WebServiceException("Erro ao recuperar todos os vendedores do banco: " 
 //					+ ex.getMessage(), ErroCode.SERVER_ERROR.getCode());
 		}
 		
 		if (vendedores.isEmpty()) {
-			//throw new DAOException("A consulta não encontrou vendedores.", ErroCode.NOT_FOUND.getCode());
+			//throw new WebServiceException("A consulta não encontrou vendedores.", ErroCode.NOT_FOUND.getCode());
 		}
 		return vendedores;
 	}	
