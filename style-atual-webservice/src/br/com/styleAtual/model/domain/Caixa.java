@@ -1,17 +1,46 @@
 package br.com.styleAtual.model.domain;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
-public class Caixa {
+@Entity
+@Table(name = "caixa") //Nome da tabela
+public class Caixa implements Serializable{
+	
+	/**
+	 * Serial criado automaticamente. Boa pr·tica de programaÁ„o
+	 */
+	private static final long serialVersionUID = 4825401393613991083L;
 	
 	//ATRIBUTOS
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY) //Estrategia de auto incremento
+	@Column(name="data_abertura")
 	private Date data;
+	
+	@NotNull
+	@Column(name="status_caixa")
 	private String status;
+	
+	@NotNull
+	@Column(name="saldo_inicial")
 	private double saldoInicial;
+	
+	@NotNull
+	@Column(name="saldo_final")
 	private double saldoFinal;
+	
+	@NotNull
+	@Column(name="hora_abertura")
 	private Calendar horaAbertura;
+	
+	@NotNull
+	@Column(name="hora_fechamento")
 	private Calendar horaFechamento;
+	
 	//TODO gerente respons√°vel por abrir e fechar
 		
 	//CONSTRUTOR PADR√ÉO
