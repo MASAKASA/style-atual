@@ -2,6 +2,8 @@ package br.com.styleAtual.service;
 
 import java.util.List;
 
+import br.com.styleAtual.exceptions.WebServiceException;
+
 /**
  * 
  * @author MARCIO
@@ -16,48 +18,55 @@ public interface InterfaceService <O,I,S,L>{
 
 	/**
 	 * 
-	 * @param Object para ser salvo no banco de dados 
+	 * @param Object para ser salvo no banco de dados
+	 * @throws WebServiceException captura qualquer exceção de tempo de execução e repassa a responsabilidade para outro camada 
 	 */
-	public void save(O object);
+	public void save(O object) throws WebServiceException;
 	
 	/**
 	 * 
 	 * @param Object para ser atualizado no banco de dados
+	 * @throws WebServiceException captura qualquer exceção de tempo de execução e repassa a responsabilidade para outro camada
 	 */
-	public void update(O object);
+	public void update(O object) throws WebServiceException;
 	
 	/**
 	 * 
 	 * @param Long id do objeto para realização de delete no banco de dados 
 	 * @return String com confirmação de operação
+	 * @throws WebServiceException captura qualquer exceção de tempo de execução e repassa a responsabilidade para outro camada
 	 */
-	public S delete(L id);
+	public S delete(L id) throws WebServiceException;
 	
 	/**
 	 * 
 	 * @param Long id do objeto para pesquisa no banco de dados 
 	 * @return Objeto da pesquisa no banco de dados
+	 * @throws WebServiceException captura qualquer exceção de tempo de execução e repassa a responsabilidade para outro camada
 	 */
-	public O getById(L id);
+	public O getById(L id) throws WebServiceException;
 	
 	/**
 	 * 
 	 * @param Integer firsResult para primeiro resultado da pesquisa no banco de dados
 	 * @param Integer maxResult para total de resultado da pesquisa no banco de dados 
 	 * @return Lista com objetos da pesquisa no banco e dados
+	 * @throws WebServiceException captura qualquer exceção de tempo de execução e repassa a responsabilidade para outro camada
 	 */
-	public List<O> getByPagination(I firsResult, I maxResult);
+	public List<O> getByPagination(I firsResult, I maxResult) throws WebServiceException;
 	
 	/**
 	 * 
 	 * @param String com o nome do objeto para pesquisa no banco de dados 
 	 * @return Lista com objetos da pesquisa no banco e dados
+	 * @throws WebServiceException captura qualquer exceção de tempo de execução e repassa a responsabilidade para outro camada
 	 */
-	public List<O> getByName(S name);
+	public List<O> getByName(S name) throws WebServiceException;
 	
 	/**
 	 * 
 	 * @return Lista com todos objetos da pesquisa no banco e dados
+	 * @throws WebServiceException captura qualquer exceção de tempo de execução e repassa a responsabilidade para outro camada
 	 */
-	public List<O> getAll();
+	public List<O> getAll() throws WebServiceException;
 }
