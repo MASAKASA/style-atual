@@ -50,18 +50,6 @@ public class Caixa implements Serializable{
 		super();
 	}
 	
-	//CONSTRUTOR COM ATRIBUTOS
-	public Caixa(Date data, StatusCaixa statusCaixa, double saldoInicial, double saldoFinal, Calendar horaAbertura,
-			Calendar horaFechamento) {
-		super();
-		this.data = data;
-		this.statusCaixa = statusCaixa;
-		this.saldoInicial = saldoInicial;
-		this.saldoFinal = saldoFinal;
-		this.horaAbertura = horaAbertura;
-		this.horaFechamento = horaFechamento;
-	}
-	
 	//Metodo de boa prática de programação
 	@Override
 	public int hashCode() {
