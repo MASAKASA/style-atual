@@ -1,10 +1,13 @@
 package br.com.styleAtual.config;
 
+import java.util.Properties;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration //Anotacao informando ao Spring que essa classe e de configucao
@@ -27,6 +30,17 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter {
         bean.setSuffix(".jsp");
         return bean;
     }
+    
+//    @Bean
+//    public SimpleMappingExceptionResolver createSimpleMappingExceptionResolver() {
+//      SimpleMappingExceptionResolver resolver = new SimpleMappingExceptionResolver();
+//      Properties errorMaps = new Properties();
+//      errorMaps.setProperty("WebServiceException", "error");
+//      resolver.setExceptionMappings(errorMaps);
+//      resolver.setDefaultErrorView("globalerror");
+//      resolver.setExceptionAttribute("ex");
+//      return resolver;
+//   }
     
 //	@Bean
 //	public MessageSource messageSource() {

@@ -9,7 +9,7 @@ public class WebServiceException extends RuntimeException {
 		super(menssage);
 		this.code = code;
 	}
-
+	
 	public Integer getCode() {
 		return code;
 	}

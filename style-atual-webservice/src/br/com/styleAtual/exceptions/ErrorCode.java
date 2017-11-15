@@ -1,6 +1,6 @@
 package br.com.styleAtual.exceptions;
 
-public enum ErroCode {
+public enum ErrorCode {
 
 	BAD_REQUEST(400),
 	NOT_FOUND(404),
@@ -8,7 +8,7 @@ public enum ErroCode {
 	
 	private Integer code;
 
-	ErroCode(Integer code) {
+	ErrorCode(Integer code) {
 		this.code = code;
 	}
 

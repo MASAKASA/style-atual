@@ -25,7 +25,7 @@ public class SpringInitConfig implements WebApplicationInitializer {
  
         //Cria o contexto do aplicativo Spring do servlet do dispatcher
         AnnotationConfigWebApplicationContext dispatcherServlet = new AnnotationConfigWebApplicationContext();
-        dispatcherServlet.register(SpringMvcConfig.class, SpringJpaConfig.class);
+        dispatcherServlet.register(SpringMvcConfig.class);
              
         //Registra e mapeia o dispatcher servlet
         ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcher", new DispatcherServlet(dispatcherServlet));

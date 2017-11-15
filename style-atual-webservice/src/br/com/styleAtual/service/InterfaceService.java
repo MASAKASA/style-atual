@@ -33,10 +33,9 @@ public interface InterfaceService <O,I,S,L>{
 	/**
 	 * 
 	 * @param Long id do objeto para realização de delete no banco de dados 
-	 * @return String com confirmação de operação
 	 * @throws WebServiceException captura qualquer exceção de tempo de execução e repassa a responsabilidade para outro camada
 	 */
-	public S delete(L id) throws WebServiceException;
+	public void delete(L id) throws WebServiceException;
 	
 	/**
 	 * 
