@@ -31,17 +31,6 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter {
         return bean;
     }
     
-//    @Bean
-//    public SimpleMappingExceptionResolver createSimpleMappingExceptionResolver() {
-//      SimpleMappingExceptionResolver resolver = new SimpleMappingExceptionResolver();
-//      Properties errorMaps = new Properties();
-//      errorMaps.setProperty("WebServiceException", "error");
-//      resolver.setExceptionMappings(errorMaps);
-//      resolver.setDefaultErrorView("globalerror");
-//      resolver.setExceptionAttribute("ex");
-//      return resolver;
-//   }
-    
 //	@Bean
 //	public MessageSource messageSource() {
 //		ResourceBundleMessageSource source = new ResourceBundleMessageSource();
