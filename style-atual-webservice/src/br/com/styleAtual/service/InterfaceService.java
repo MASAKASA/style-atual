@@ -12,7 +12,7 @@ import br.com.styleAtual.exceptions.WebServiceException;
  * @param <I> Vão ser dois valor int para pesquisa com paginação: firsResult para primeiro
  *  resultado e maxResult para quantidade de retorno
  * @param <S> String para pesquisa por nome do objeto
- * @param <L> Long para pesquisa por chave primaria do objeto
+ * @param <L> Identificador único para pesquisa por chave primaria do objeto
  */
 public interface InterfaceService <O,I,S,L>{
 

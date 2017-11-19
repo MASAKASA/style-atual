@@ -7,6 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.stereotype.Component;
+
 @Entity //Entidade
 @Table(name = "caixa") //Nome da tabela
 public class Caixa implements Serializable{

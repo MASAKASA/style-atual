@@ -10,6 +10,9 @@ import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import br.com.styleAtual.model.domain.Caixa;
+import br.com.styleAtual.model.domain.Vendedor;
+
 @Configuration //Anotacao informando ao Spring que essa classe e de configucao
 public class SpringInitConfig implements WebApplicationInitializer {
 

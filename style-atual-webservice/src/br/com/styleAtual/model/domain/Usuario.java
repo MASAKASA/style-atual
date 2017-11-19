@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.stereotype.Component;
+
 @Entity //Anotacao para mapiar a entidade no banco
 @Table(name = "usuario") //Nome da tabela
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) //Estrategia para heranca

@@ -5,8 +5,10 @@ import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 
+import org.springframework.stereotype.Component;
+
 @Entity //Anotacao para mapiar a entidade no banco
-@DiscriminatorValue(value = "V") //Atributo da coluna tipo informando que os dados contidos na linha vai ser de um vendedor 
+@DiscriminatorValue(value = "V") //Atributo da coluna tipo informando que os dados contidos na linha vai ser de um vendedor
 public class Vendedor extends Usuario implements Serializable {
 	
 	/**

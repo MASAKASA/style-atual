@@ -1,5 +1,6 @@
 package br.com.styleAtual.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,9 +21,8 @@ import br.com.styleAtual.service.InterfaceService;
 @RequestMapping("caixa") //Mapeamneto Rest para o Spring poder encontrar o controlador certo[http://localhost:8080/style-atual-webservice/caixa]
 public class CaixaController implements InterfaceController<Caixa, Integer, String, Date>{
 
-	@Autowired //Injeção de Dependência
+	//@Autowired //Injeção de Dependência
 	private InterfaceService<Caixa, Integer, String, Date> caixaService;
-	
 	
 	@Override
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -70,7 +70,10 @@ public class CaixaController implements InterfaceController<Caixa, Integer, Stri
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
 	public ResponseEntity<List<Caixa>> getAll() {
 		// TODO Auto-generated method stub
-		return null;
+		List<Caixa> caixas = new ArrayList<>();
+		Caixa caixa = new Caixa();
+		caixas.add(caixa);
+		return new ResponseEntity<List<Caixa>>(caixas, HttpStatus.OK);
 	}
 
 }

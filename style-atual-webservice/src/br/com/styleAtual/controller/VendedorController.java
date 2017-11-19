@@ -23,7 +23,7 @@ import br.com.styleAtual.service.InterfaceService;
 @RequestMapping("vendedor") //Mapiamneto Rest para o Spring poder encontrar o controlador certo[http://localhost:8080/style-atual-webservice/vendedor]
 public class VendedorController implements InterfaceController<Vendedor, Integer, String, Long>{
 
-	@Autowired //Injecao de depentencia
+	//@Autowired //Injecao de depentencia
 	private InterfaceService<Vendedor, Integer, String, Long> vendedorService;
 	
 	@Override
@@ -117,7 +117,7 @@ public class VendedorController implements InterfaceController<Vendedor, Integer
 		
 		return new ResponseEntity<List<Vendedor>>(vendedores, HttpStatus.OK);
 	}
-	
+
 	@Override
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET)//Mapiamneto Rest para o Spring poder encontrar o metodo no certo[http://localhost:8080/style-atual-webservice/vendedor/getAll]. Tambem informando que a requisicao vai ser via GET
 	public ResponseEntity<List<Vendedor>> getAll() {//@ResponseEntity para informar que o retorno vai em SJon no Body
